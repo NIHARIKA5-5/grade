@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assign Grade</title>
+</head>
+<body>
+  <h2>Assign Grade Based on Percentage</h2>
+  <input type="number" id="percentageInput" placeholder="Enter percentage (1-100)" min="0" max="100" />
+  <button onclick="showGrade()">Get Grade</button>
+  <p id="gradeOutput"></p>
+
+  <script>
+    function assignGrade(percentage) {
+      if (percentage < 0 || percentage > 100) {
+        return 'Invalid percentage';
+      }
+      if (percentage >= 90) return 'A+';
+      else if (percentage >= 80) return 'A';
+      else if (percentage >= 70) return 'B+';
+      else if (percentage >= 60) return 'B';
+      else if (percentage >= 50) return 'C';
+      else if (percentage >= 40) return 'D';
+      else return 'F';
+    }
+
+    function showGrade() {
+      const input = document.getElementById('percentageInput').value;
+      const percentage = Number(input);
+      const output = document.getElementById('gradeOutput');
+
+      if (input === '' || isNaN(percentage)) {
+        output.textContent = 'Please enter a valid number.';
+        return;
+      }
+
+      const grade = assignGrade(percentage);
+      output.textContent = `Grade: ${grade}`;
+    }
+  </script>
+</body>
+</html>
